@@ -13,10 +13,24 @@
 	<!-- Barra de navegação do bootstrap -->
 	<nav class=" navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="#">Gerenciador de tarefas</a>
+		
+		<!-- Inclusão de menu resposivo -->
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-app">
+			<span class="navbar-toggle-icon"></span>
+		</button>
+		
+		<div class="collapse navbar-collapse" id="navbar-app">
+			<div class="navbar-nav">
+				<a class="nav-item nav-link" href="/">Home</a>
+			</div>
+		</div>
+		
 	</nav>
 	
-	<p> Olá, seja bem-vindo ao Gerenciador de tarefas!</p>
-	<p th:text="${mensagem}"></p>
+	<div class="container">
+		<p> Olá, seja bem-vindo ao Gerenciador de tarefas!</p>
+		<p th:text="${mensagem}"></p>
+	</div>
 	
 	<!-- Import do jquery bootstrap-->
 	<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
