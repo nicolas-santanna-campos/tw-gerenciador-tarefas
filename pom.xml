@@ -53,6 +53,28 @@
 <!-- 			<artifactId>spring-security-test</artifactId> -->
 <!-- 			<scope>test</scope> -->
 <!-- 		</dependency> -->
+		
+		<!-- WEBJARS -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>webjars-locator</artifactId>
+			<version>0.36</version>
+		</dependency>
+		
+		<!-- Jquery -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>jquery</artifactId>
+			<version>3.4.1</version>
+		</dependency>
+		
+		<!-- Bootstrap -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>4.3.1</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
