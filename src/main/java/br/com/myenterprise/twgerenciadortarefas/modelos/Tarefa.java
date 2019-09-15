@@ -2,12 +2,32 @@ package br.com.myenterprise.twgerenciadortarefas.modelos;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "tar_tarefas")
 public class Tarefa {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "tar_id")
 	private Long id;
+	
+	@Column(name = "tar_titulo", length = 50, nullable = false)
 	private String titulo;
+	
+	@Column(name = "tar_descricao", length = 100, nullable = true)
 	private String descricao;
+	
+	@Column(name = "tar_data_expiracao", nullable = false)
 	private Date dataExpiracao;
+	
+	@Column(name = "tar_concluida", nullable = false)
 	private Boolean concluida = false;
 
 	public Long getId() {
