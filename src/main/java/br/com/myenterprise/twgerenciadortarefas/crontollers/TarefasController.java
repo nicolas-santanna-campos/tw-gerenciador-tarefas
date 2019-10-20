@@ -1,7 +1,12 @@
 package br.com.myenterprise.twgerenciadortarefas.crontollers;
 
+import java.util.Date;
+
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,9 +41,25 @@ public class TarefasController {
 	}
 	
 	@PostMapping("/inserir")
-	public String inserir(Tarefa tarefa) {
-		repositorioTarefa.save(tarefa);
+	public ModelAndView inserir(@Valid Tarefa tarefa, BindingResult bindingResult) {
+		ModelAndView mv = new ModelAndView();
 		
-		return "redirect:/tarefas/listar";
+		if(tarefa.getDataExpiracao() == null) {
+			bindingResult.rejectValue("dataExpiracao", "tarefa.dataExpiracaoInvalida", "A data de expiração é obrigatória.");
+		} else {
+				if(tarefa.getDataExpiracao().before(new Date())) {
+				bindingResult.rejectValue("dataExpiracao", "tarefa.dataExpiracaoInvalida", "A data de expiração não pode ser anterior a data atual.");
+			}
+		}
+		
+		if(bindingResult.hasErrors()) {
+			mv.setViewName("tarefas/inserir");
+			mv.addObject(tarefa);
+		} else {
+			mv.setViewName("redirect:/tarefas/listar");
+			repositorioTarefa.save(tarefa);
+		}
+		
+		return mv;
 	}
 }

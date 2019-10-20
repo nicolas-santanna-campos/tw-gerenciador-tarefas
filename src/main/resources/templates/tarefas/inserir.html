@@ -20,18 +20,29 @@
 		<form class="form-horizontal" action="/tarefas/inserir" method="post" th:object="${tarefa}">
 			<div class="row">
 				<div class="form-group col-md-6">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('titulo')}">
+						<label th:errors="*{titulo}" class="validation-message"></label>
+					</div>
 					<label>Título:</label>
-					<input type="text" required="required" maxlength="50" class="form-control" th:field="*{titulo}">
+					<input type="text" class="form-control" th:field="*{titulo}">
 				</div>
 			</div>
+			
 			<div class="row">
 				<div class="form-group col-md-6">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('descricao')}">
+						<label th:errors="*{descricao}" class="validation-message"></label>
+					</div>
 					<label>Descrição:</label>
-					<input type="text" maxlength="100" class="form-control" th:field="*{descricao}">
+					<input type="text" class="form-control" th:field="*{descricao}">
 				</div>
 			</div>
+			
 			<div class="row">
 				<div class="form-group col-md-6">
+					<div class="alert alert-danger" role="alert" th:if="${#fields.hasErrors('dataExpiracao')}">
+						<label th:errors="*{dataExpiracao}" class="validation-message"></label>
+					</div>
 					<label>Data de expiração:</label>
 					<input type="date" class="form-control" th:field="*{dataExpiracao}">
 				</div>
